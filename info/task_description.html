@@ -1,0 +1,63 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    Given {% if is_js %}an array{% else %}a list{% endif %} of <code>disks</code> on the two-dimensional plane represented as tuples <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code> so that <code>x, y</code> is the <strong>center point</strong> and <code>r</code> is the <strong>radius</strong> of that disk, count how many pairs of disks <strong>intersect</strong>. 
+</p>
+<p style="text-align: justify;">
+    Two disks <code>{% if is_js %}[x1, y1, r1]{% else %}(x1, y1, r1){% endif %}</code> and <code>{% if is_js %}[x2, y2, r2]{% else %}(x2, y2, r2){% endif %}</code> intersect if and only if they satisfy the <strong>Pythagorean</strong> inequality <code>(x2-x1)**2+(y2-y1)**2<=(r1+r2)**2</code>. 
+</p>
+<p style="text-align: justify;"><i>
+    Note how this precise formula runs on pure integer arithmetic whenever its arguments are integers, so no square roots or any other irrational numbers gum up the works with all that decimal noise. (This formula also uses the operator <code><=</code> to count two <strong>kissing</strong>  disks as an intersecting pair).
+</i></p>
+<p style="text-align: justify;">
+    For this problem, crudely looping through all possible pairs of disks would work, but also become horrendously inefficient for large lists. However, a <a target="_blank" href="https://en.wikipedia.org/wiki/Sweep_line_algorithm">sweep line algorithm</a> can solve this problem not just <strong>effectively</strong>, but also <strong>efficiently</strong> (a crucial but often overlooked “eff-ing” distinction) by looking at a far fewer pairs of disks.
+</p>
+<p>
+    Here is a scheme for <code>[{% if is_js %}[0, 0, 3], [6, 0, 3], [6, 6, 3], [0, 6, 3]{% else %}(0, 0, 3), (6, 0, 3), (6, 6, 3), (0, 6, 3){% endif %}]</code>: 
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}overlapping-disks.png" alt="example" style="max-height: 250px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+    <strong>Input:</strong> <span translate="repeat">{% if is_js %}Array{% else %}List{% endif %}</span> of tuples <span translate="no">({% if is_js %}array{% else %}tuple{% endif %})</span> of integers <span translate="no">({% if is_js %}number{% else %}int{% endif %})</span>.
+</p>
+
+<p>
+    <strong>Output:</strong> Integer <span translate="no">({% if is_js %}number{% else %}int{% endif %})</span>. 
+</p>
+
+
+<p>
+    <strong>Examples:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<details>
+    <summary><u>If you feel yourself in need of a hint, click this line.</u></summary>
+    <p style="text-align: justify;">
+        Sweep through the space from left to right for all relevant x-coordinate values and maintain the <strong>set of active disks</strong> at the moment. Each individual disk <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code> enters the active set when the vertical sweep line reaches the x-coordinate <code>x-r</code>, and leaves the active set when the sweep line reaches <code>x+r</code>. At the time when a disk enters the active set, you need to look for its intersections only in this active set.
+    </p>
+    
+</details>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
+<p><i>The mission was taken from <span translate="no">Python CCPS 109</span>. It is taught for <span translate="no">Ryerson Chang School of Continuing Education</span> by <a href="https://github.com/ikokkari">Ilkka Kokkarinen</a></i></p>
