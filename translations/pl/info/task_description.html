@@ -1,0 +1,63 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    Biorąc pod uwagę {% if is_js %}, tablicę{% else %}, listę{% endif %} z <code>disks</code> na dwuwymiarowej płaszczyźnie reprezentowaną jako krotki <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code> tak, że <code>x, y</code> jest <strong>punktem środkowym</strong>, a <code>r</code> jest <strong>promieniem</strong> tego dysku, proszę policzyć, ile par dysków <strong>się przecina</strong>. 
+</p>
+<p style="text-align: justify;">
+    Dwa dyski <code>{% if is_js %}[x1, y1, r1]{% else %}(x1, y1, r1){% endif %}</code> i <code>{% if is_js %}[x2, y2, r2]{% else %}(x2, y2, r2){% endif %}</code> przecinają się wtedy i tylko wtedy, gdy spełniają nierówność <strong>pitagorejską</strong> <code>(x2-x1)**2+(y2-y1)**2<=(r1+r2)**2</code>. 
+</p>
+<p style="text-align: justify;"><i>
+    Proszę zauważyć, że ta precyzyjna formuła działa w oparciu o czystą arytmetykę całkowitoliczbową, gdy jej argumenty są liczbami całkowitymi, więc żadne pierwiastki kwadratowe ani inne liczby niewymierne nie utrudniają pracy z całym tym dziesiętnym hałasem. (Wzór ten wykorzystuje również operator <code><=</code> do liczenia dwóch <strong>całujących się</strong> dysków jako przecinającej się pary).
+</i></p>
+<p style="text-align: justify;">
+    W przypadku tego problemu, prymitywne zapętlenie wszystkich możliwych par dysków zadziałałoby, ale stałoby się horrendalnie nieefektywne dla dużych list. Jednakże, <a target="_blank" href="https://en.wikipedia.org/wiki/Sweep_line_algorithm">sweep line algorithm</a> może rozwiązać ten problem nie tylko <strong>efektywnie</strong>, ale także <strong>wydajnie</strong> (kluczowe, ale często pomijane rozróżnienie "eff-ing"), analizując znacznie mniejszą liczbę par dysków.
+</p>
+<p>
+    Oto schemat dla <code>[{% if is_js %}[0, 0, 3], [6, 0, 3], [6, 6, 3], [0, 6, 3]{% else %}(0, 0, 3), (6, 0, 3), (6, 6, 3), (0, 6, 3){% endif %}]</code>: 
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}overlapping-disks.png" alt="example" style="max-height: 250px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Wejście:</strong> {% if is_js %}Array{% else %}List{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span> krotek <span>({% if is_js %}array{% else %}tuple{% endif %})</span> liczb całkowitych <span>({% if is_js %}number{% else %}int{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Dane wyjściowe:</strong> Liczba całkowita <span>({% if is_js %}number{% else %}int{% endif %})</span>. 
+</p>
+
+
+<p>
+    <strong>Przykłady:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<details>
+    <summary><u>Jeśli potrzebują Państwo podpowiedzi, proszę kliknąć ten wiersz.</u></summary>
+    <p style="text-align: justify;">
+        Proszę przeczesać przestrzeń od lewej do prawej dla wszystkich odpowiednich wartości współrzędnych x i zachować <strong>zestaw aktywnych dysków</strong> w danym momencie. Każdy pojedynczy dysk <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code> wchodzi do aktywnego zestawu, gdy pionowa linia zamiatania osiągnie współrzędną x <code>x-r</code>, a opuszcza aktywny zestaw, gdy linia zamiatania osiągnie <code>x+r</code>. W momencie, gdy dysk wchodzi do aktywnego zbioru, należy szukać jego przecięć tylko w tym aktywnym zbiorze.
+    </p>
+    
+</details>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
+<p><i>Misja została zaczerpnięta z <span>Python CCPS 109</span>. Jest ona nauczana dla <span>Ryerson Chang School of Continuing Education</span> przez <a href="https://github.com/ikokkari">Ilkka Kokkarinen</a></i></p>
