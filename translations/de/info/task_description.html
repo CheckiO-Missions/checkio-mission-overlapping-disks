@@ -1,0 +1,63 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    Gegeben {% if is_js %}ein Array{% else %}eine Liste{% endif %} von <code>disks</code> auf der zweidimensionalen Ebene, dargestellt als Tupel <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code> so dass <code>x, y</code> der <strong>Mittelpunkt</strong> und <code>r</code> der <strong>Radius</strong> dieser Scheibe ist, zählen Sie, wie viele Paare von Scheiben <strong>sich schneiden</strong>. 
+</p>
+<p style="text-align: justify;">
+    Zwei Scheiben <code>{% if is_js %}[x1, y1, r1]{% else %}(x1, y1, r1){% endif %}</code> und <code>{% if is_js %}[x2, y2, r2]{% else %}(x2, y2, r2){% endif %}</code> schneiden sich nur dann, wenn sie die <strong>pythagoreische</strong> Ungleichung <code>(x2-x1)**2+(y2-y1)**2<=(r1+r2)**2</code> erfüllen. 
+</p>
+<p style="text-align: justify;"><i>
+    Beachten Sie, dass diese präzise Formel mit reiner Ganzzahlarithmetik arbeitet, wenn ihre Argumente ganzzahlig sind. Es gibt also keine Quadratwurzeln oder andere irrationale Zahlen, die die Arbeit mit all dem dezimalen Rauschen vermasseln. (Diese Formel verwendet auch den Operator <code><=</code>, um zwei <strong>sich küssende</strong> Scheiben als ein sich überschneidendes Paar zu zählen).
+</i></p>
+<p style="text-align: justify;">
+    Bei diesem Problem würde eine grobe Schleifenbildung durch alle möglichen Scheibenpaare zwar funktionieren, aber bei großen Listen schrecklich ineffizient werden. Ein <a target="_blank" href="https://en.wikipedia.org/wiki/Sweep_line_algorithm">sweep line algorithm</a> kann dieses Problem jedoch nicht nur <strong>effektiv</strong>, sondern auch <strong>effizient</strong> lösen (ein entscheidender, aber oft übersehener Unterschied), indem es weit weniger Scheibenpaare betrachtet.
+</p>
+<p>
+    Hier ist ein Schema für <code>[{% if is_js %}[0, 0, 3], [6, 0, 3], [6, 6, 3], [0, 6, 3]{% else %}(0, 0, 3), (6, 0, 3), (6, 6, 3), (0, 6, 3){% endif %}]</code>: 
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}overlapping-disks.png" alt="example" style="max-height: 250px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe:</strong> {% if is_js %}Array{% else %}Liste{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span> von Tupeln <span>({% if is_js %}array{% else %}tuple{% endif %})</span> von ganzen Zahlen <span>({% if is_js %}number{% else %}int{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> Ganzzahl <span>({% if is_js %}number{% else %}int{% endif %})</span>. 
+</p>
+
+
+<p>
+    <strong>Beispiele:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<details>
+    <summary><u>Wenn Sie einen Tipp brauchen, klicken Sie auf diese Zeile.</u></summary>
+    <p style="text-align: justify;">
+        Durchsuchen Sie den Raum von links nach rechts nach allen relevanten x-Koordinatenwerten und behalten Sie die <strong>Menge der aktiven Platten</strong> im Moment bei. Jede einzelne Scheibe <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code> tritt in die aktive Gruppe ein, wenn die vertikale Sweep-Linie die x-Koordinate <code>x-r</code> erreicht, und verlässt die aktive Gruppe, wenn die Sweep-Linie <code>x+r</code> erreicht. Zu dem Zeitpunkt, an dem eine Scheibe in die aktive Menge eintritt, müssen Sie nur nach ihren Schnittpunkten in dieser aktiven Menge suchen.
+    </p>
+    
+</details>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
+<p><i>Die Aufgabe wurde von <span>Python CCPS 109</span> übernommen. Sie wird für <span>Ryerson Chang School of Continuing Education</span> gelehrt von <a href="https://github.com/ikokkari">Ilkka Kokkarinen</a></i></p>
