@@ -1,0 +1,63 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    给定{% if is_js %}一个数组{% else %}在二维平面上以图元表示的<code>disks</code> 的列表{% endif %} <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code>使<code>x, y</code> 为<strong>圆心点</strong>，<code>r</code> 为该圆盘的<strong>半径</strong>，请计算有多少对圆盘<strong>相交</strong>。 
+</p>
+<p style="text-align: justify;">
+    两个圆盘 <code>{% if is_js %}[x1, y1, r1]{% else %}(x1, y1, r1){% endif %}</code>和 <code>{% if is_js %}[x2, y2, r2]{% else %}(x2, y2, r2){% endif %}</code>相交，当且仅当它们满足<strong>毕达哥拉斯</strong>不等式<code>(x2-x1)**2+(y2-y1)**2<=(r1+r2)**2</code> 时。 
+</p>
+<p style="text-align: justify;"><i>
+    请注意，只要参数是整数，这个精确的公式就能在纯粹的整数运算中运行，因此没有平方根或任何其他无理数的小数噪音。(该公式还使用运算符<code><=</code> 将两个<strong>接吻</strong>盘视为相交的一对）。
+</i></p>
+<p style="text-align: justify;">
+    对于这个问题，简单地循环所有可能的磁盘对是可行的，但对于大型列表来说，效率会变得非常低。然而，<a target="_blank" href="https://en.wikipedia.org/wiki/Sweep_line_algorithm">sweep line algorithm</a> 不仅能<strong>有效地</strong>解决这个问题，而且还能<strong>高效地</strong>解决这个问题（这是一个至关重要但经常被忽视的 "效率 "区别），因为它只需查看少得多的磁盘对。
+</p>
+<p>
+    下面是一个 <code>[{% if is_js %}[0, 0, 3], [6, 0, 3], [6, 6, 3], [0, 6, 3]{% else %}(0, 0, 3), (6, 0, 3), (6, 6, 3), (0, 6, 3){% endif %}]</code>: 
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}overlapping-disks.png" alt="example" style="max-height: 250px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>输入：</strong> {% if is_js %}数组{% else %}列表{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span>元组 <span>({% if is_js %}array{% else %}tuple{% endif %})</span>的整数 <span>({% if is_js %}number{% else %}int{% endif %})</span>.
+</p>
+
+<p>
+   <strong>输出：</strong>整数 <span>({% if is_js %}number{% else %}int{% endif %})</span>. 
+</p>
+
+
+<p>
+    <strong>示例</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<details>
+    <summary><u>如果您需要提示，请点击这一行。</u></summary>
+    <p style="text-align: justify;">
+        从左到右扫描空间中所有相关的 x 坐标值，并保留当前<strong>活动磁盘的集合</strong>。每个磁盘 <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code>在垂直扫描线到达 x 坐标<code>x-r</code> 时进入活动盘集，在扫描线到达<code>x+r</code> 时离开活动盘集。当某个圆盘进入活动集时，只需在该活动集中查找其交点。
+    </p>
+    
+</details>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
+<p><i>该任务摘自<span>Python CCPS 109</span> 。它由<span>Ryerson Chang School of Continuing Education</span> 教授。<a href="https://github.com/ikokkari">Ilkka Kokkarinen</a></i></p>
