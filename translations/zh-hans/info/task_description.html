@@ -36,13 +36,7 @@
 
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 
-<details>
-    <summary><u>如果您需要提示，请点击这一行。</u></summary>
-    <p style="text-align: justify;">
-        从左到右扫描空间中所有相关的 x 坐标值，并保留当前<strong>活动磁盘的集合</strong>。每个磁盘 <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code>在垂直扫描线到达 x 坐标<code>x-r</code> 时进入活动盘集，在扫描线到达<code>x+r</code> 时离开活动盘集。当某个圆盘进入活动集时，只需在该活动集中查找其交点。
-    </p>
-    
-</details>
+
 
 <!-- Here you can explain how it can be used in development -->
 <!-- The section is optional -->

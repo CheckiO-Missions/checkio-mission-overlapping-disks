@@ -36,13 +36,7 @@
 
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 
-<details>
-    <summary><u>Jeśli potrzebują Państwo podpowiedzi, proszę kliknąć ten wiersz.</u></summary>
-    <p style="text-align: justify;">
-        Proszę przeczesać przestrzeń od lewej do prawej dla wszystkich odpowiednich wartości współrzędnych x i zachować <strong>zestaw aktywnych dysków</strong> w danym momencie. Każdy pojedynczy dysk <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code> wchodzi do aktywnego zestawu, gdy pionowa linia zamiatania osiągnie współrzędną x <code>x-r</code>, a opuszcza aktywny zestaw, gdy linia zamiatania osiągnie <code>x+r</code>. W momencie, gdy dysk wchodzi do aktywnego zbioru, należy szukać jego przecięć tylko w tym aktywnym zbiorze.
-    </p>
-    
-</details>
+
 
 <!-- Here you can explain how it can be used in development -->
 <!-- The section is optional -->

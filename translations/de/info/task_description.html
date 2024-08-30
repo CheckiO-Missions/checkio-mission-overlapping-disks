@@ -36,13 +36,7 @@
 
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 
-<details>
-    <summary><u>Wenn Sie einen Tipp brauchen, klicken Sie auf diese Zeile.</u></summary>
-    <p style="text-align: justify;">
-        Durchsuchen Sie den Raum von links nach rechts nach allen relevanten x-Koordinatenwerten und behalten Sie die <strong>Menge der aktiven Platten</strong> im Moment bei. Jede einzelne Scheibe <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code> tritt in die aktive Gruppe ein, wenn die vertikale Sweep-Linie die x-Koordinate <code>x-r</code> erreicht, und verlässt die aktive Gruppe, wenn die Sweep-Linie <code>x+r</code> erreicht. Zu dem Zeitpunkt, an dem eine Scheibe in die aktive Menge eintritt, müssen Sie nur nach ihren Schnittpunkten in dieser aktiven Menge suchen.
-    </p>
-    
-</details>
+
 
 <!-- Here you can explain how it can be used in development -->
 <!-- The section is optional -->

@@ -36,13 +36,6 @@
 
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 
-<details>
-    <summary><u>If you feel yourself in need of a hint, click this line.</u></summary>
-    <p style="text-align: justify;">
-        Sweep through the space from left to right for all relevant x-coordinate values and maintain the <strong>set of active disks</strong> at the moment. Each individual disk <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code> enters the active set when the vertical sweep line reaches the x-coordinate <code>x-r</code>, and leaves the active set when the sweep line reaches <code>x+r</code>. At the time when a disk enters the active set, you need to look for its intersections only in this active set.
-    </p>
-    
-</details>
 
 <!-- Here you can explain how it can be used in development -->
 <!-- The section is optional -->

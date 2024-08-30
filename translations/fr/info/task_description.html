@@ -36,13 +36,7 @@
 
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 
-<details>
-    <summary><u>Si vous avez besoin d'un conseil, cliquez sur cette ligne.</u></summary>
-    <p style="text-align: justify;">
-        Balayez l'espace de gauche à droite pour toutes les valeurs de coordonnées x pertinentes et conservez l'<strong>ensemble des disques actifs</strong> à ce moment-là. Chaque disque individuel <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code> entre dans l'ensemble actif lorsque la ligne de balayage verticale atteint la coordonnée x <code>x-r</code>, et quitte l'ensemble actif lorsque la ligne de balayage atteint <code>x+r</code>. Lorsqu'un disque entre dans l'ensemble actif, vous devez rechercher ses intersections uniquement dans cet ensemble actif.
-    </p>
-    
-</details>
+
 
 <!-- Here you can explain how it can be used in development -->
 <!-- The section is optional -->

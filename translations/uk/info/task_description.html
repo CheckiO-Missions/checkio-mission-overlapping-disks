@@ -36,13 +36,7 @@
 
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 
-<details>
-    <summary><u>Якщо ви відчуваєте, що вам потрібна підказка, клацніть цей рядок.</u></summary>
-    <p style="text-align: justify;">
-        Прокрутіть простір зліва направо для всіх відповідних значень координати x і збережіть <strong>набір активних дисків</strong> на даний момент. Кожен окремий диск <code>{% if is_js %}[x, y, r]{% else %}(x, y, r){% endif %}</code> входить до активної множини, коли вертикальна лінія розгортки досягає координати x <code>x-r</code>, і виходить з активної множини, коли лінія розгортки досягає <code>x+r</code>. У момент, коли диск потрапляє в активну множину, потрібно шукати його перетини тільки в цій активній множині.
-    </p>
-    
-</details>
+
 
 <!-- Here you can explain how it can be used in development -->
 <!-- The section is optional -->
